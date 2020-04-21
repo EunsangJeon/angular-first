@@ -23,3 +23,11 @@ tsc --version
 ng g c [component name]
 
 g: generate c: component
+
+## Creating Angular service
+
+ng g s [service name]
+
+g: generate s: service
+
+note that you need to add service as provider to module
