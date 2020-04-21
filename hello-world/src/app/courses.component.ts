@@ -10,19 +10,22 @@ import { CoursesService } from './courses.service';
                 {{ course }}
             </li>
         </ul>
+        <button (click)="onClick($event)">CLICK</button>
         <table>
             <tr>
                 <td [attr.colspan]="colSpan"></td>
             </tr>
         </table>
+        <button class="btn btn-primary" [class.active]="isActive">Save</button>
         <img [src]="imageUrl" />
     `
 })
 export class CoursesComponent {
     private title = "List of courses";
     courses;
-    imageUrl = "./assets/beatles.png";
+    imageUrl = "./assets/beatles.jpg";
     colSpan = 2;
+    isActive = true;
 
     constructor(service: CoursesService) {
         this.courses = service.getCourses();
@@ -30,5 +33,10 @@ export class CoursesComponent {
 
     getTitle() {
         return this.title;
+    }
+
+    onClick($event) {
+        // to stop event bubbling: $event.stopPropagation();
+        console.log("CLICK", $event);
     }
 }
