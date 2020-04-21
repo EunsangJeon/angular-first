@@ -12,6 +12,8 @@ cd hello-world
 
 ng serve
 
-## Basic Structure
+## Typescript
 
-directory e2e stands for end to end.
+npm install -g typescript
+
+tsc --version
