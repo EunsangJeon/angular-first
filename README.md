@@ -39,3 +39,11 @@ component - style, template, view logic
 service
 
 directive
+
+pipe
+
+## Creating Angular directive
+
+ng g d [directive name]
+
+d: directive of course
