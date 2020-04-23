@@ -31,3 +31,11 @@ ng g s [service name]
 g: generate s: service
 
 note that you need to add service as provider to module
+
+## Main pillars
+
+component - style, template, view logic
+
+service
+
+directive
