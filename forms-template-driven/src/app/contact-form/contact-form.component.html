@@ -1,0 +1,76 @@
+<!--label+input[type='text'].form-control-->
+<!--div.form-group>label[for='comment']+textarea[id='comment'].form-control-->
+<!-- you gotta import FormsModule in app module or got error to use template variable and assign ngModel to it-->
+<!--div.checkbox>label>input[type='checkbox']-->
+<!--div.form-group>label[for="contactMethod"]+select[id='contactMethod'].form-control-->
+<!--div.radio>label>input[type='radio'][name='contactMethod']-->
+
+<form #f="ngForm" (ngSubmit)="submit(f)">
+    <div ngModelGroup="contact" #contact="ngModelGroup">
+        <!--<div *nfIf="contact.valid">...</div>-->
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input
+                ngModel
+                required
+                name="firstName"
+                #firstName="ngModel" 
+                (change)="log(firstName)" 
+                id="firstName"
+                type="text"
+                class="form-control"
+                minlength="2"
+                maxlength="20"
+                pattern="Apple"
+            />
+            <div 
+                class="alert alert-danger" 
+                *ngIf="firstName.touched && !firstName.valid"
+            >
+                <div *ngIf="firstName.errors.required">
+                    First name is required.
+                </div>
+                <div *ngIf="firstName.errors.minlength">
+                    Minimum Length: {{ firstName.errors.minlength.requiredLength }}
+                </div>
+                <div *ngIf="firstName.errors.pattern">
+                    Apple
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="comment">Comment</label>
+        <textarea 
+            ngModel 
+            name="comment" 
+            id="comment" 
+            cols="30" 
+            rows="10" 
+            class="form-control">
+        </textarea>
+    </div>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" ngModel name="isSubscribed"> Subscribe to mailing list
+        </label>
+    </div>
+    <div class="form-group">
+        <label for="contactMethod">Contact method</label>
+        <select multiple ngModel name="contactMethod" id="contactMethod" class="form-control">
+            <option value=""></option>
+            <option *ngFor="let method of contactMethods" [value]="method.id"> {{ method.name }}</option>
+        </select>
+        <!--name must be passed to use ngModel-->
+    </div>
+    <div *ngFor="let method of contactMethods" class="radio">
+        <label>
+            <input ngModel type="radio" name="contactMethod" [value]="method.id" />
+            {{ method.name }}
+        </label>
+    </div>
+    <p>
+        {{ f.value | json }}
+    </p>
+    <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+</form>

@@ -47,3 +47,9 @@ pipe
 ng g d [directive name]
 
 d: directive of course
+
+## FormControl and FormGroup
+
+every input form must have FromControl
+
+value, touched, untouched, dirty, pristine, valid, errors
