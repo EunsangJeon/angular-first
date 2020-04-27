@@ -53,3 +53,7 @@ d: directive of course
 every input form must have FromControl
 
 value, touched, untouched, dirty, pristine, valid, errors
+
+## fake json
+
+http://jsonplaceholder.typicode.com/
